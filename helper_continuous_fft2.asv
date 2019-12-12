@@ -26,9 +26,6 @@ gfreq = freqRange(1:plotRange);  % Only plotting upto n/2 (as other half is the 
 % abs_h=[abs_h,abs_halto];
 
 
-rango=1:300:900;
-
-
 set(plotHandle, 'ydata', abs_h, 'xdata', gfreq); % Updating the plot
 drawnow; % Update the plot
 % grafica.YData =[2 2 2];
@@ -36,15 +33,15 @@ drawnow; % Update the plot
 
 
 
-a=abs_h+abs_halto+abs_medio;
-% porcentajealto=abs_halto/a;
-% porcentajebajo=abs_h/a;
+a=abs_h+abs_halto;
+porcentajealto=abs_halto/a;
+porcentajebajo=abs_h/a;
 
 
 
 
 
-set(grafica, 'ydata', a, 'xdata', rango ); % Updating the plot
+set(grafica, 'ydata', abs_halto+abs_h, 'xdata', gfreq ); % Updating the plot
 drawnow;
 
 

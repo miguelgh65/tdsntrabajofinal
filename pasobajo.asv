@@ -11,34 +11,37 @@ ylabel('|Y(f)|')
 grid on;
 
 Fs=s.Rate; Ts=1/Fs;
-
+%% filtropasobajo
 Orden=10;
 Rizado=1;
 Atenuacion=500;
 T=0.1;
 wc=2*600/Fs;
 [B,A]=ellip(Orden,Rizado,Atenuacion,wc);
-wcalto=2*6000/Fs;
-[Balto,Aalto]=ellip(Orden,Rizado,Atenuacion,wc,'high');
+%% filtropasoalto
 
+ Fs=s.Rate; Ts=1/Fs;
 
-Fc1=4000*5;
-Fc2=5000*5;
-Wn = [Fc1 Fc2]/Fs; 
-[Bbajo,Abajo]=ellip(Orden,Rizado,Atenuacion,Wn,'bandpass');
+Orden=10;
+Rizado=1;
+Atenuacion=500;
+T=0.1;
+wc=2*6000/Fs;
+[B1,A1]=ellip(Orden,Rizado,Atenuacion,wc,'high');
 
-
-
-
-
-
-
+%% paso banda
 
 
 
 
 
 
+
+
+
+
+
+%% representacion
 figure(2)
 grafica = barh([0 0 0]);
 yticklabels({'Frecuencias Bajas','Frecuencias Medias','Frecuencias Altas'})
@@ -49,38 +52,7 @@ xlabel('Porcentaje de cada tipo de frecuencia en la segnal')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- plotFFT = @(src, event) helper_continuous_fft2(filter(B,A,event.Data),filter(Balto,Aalto,event.Data),filter(Bbajo,Abajo,event.Data), src.Rate, hp,grafica);
+ plotFFT = @(src, event) helper_continuous_fft2(filter(B,A,event.Data), src.Rate, hp,grafica);
  hl = addlistener(s, 'DataAvailable', plotFFT);
 
 

@@ -16,8 +16,8 @@ Orden=10;
 Rizado=1;
 Atenuacion=500;
 T=0.1;
-wc=2*6000/Fs;
-[B,A]=ellip(Orden,Rizado,Atenuacion,wc,'high');
+wcalto=2*6000/Fs;
+[Batlo,Aalto]=ellip(Orden,Rizado,Atenuacion,wc,'high');
 
 
 
